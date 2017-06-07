@@ -61,8 +61,7 @@ define([
   // Alias definidos antes
   'jquery',     // lib/jquery/jquery
   'underscore', // lib/underscore/underscore
-  'marionette',    // lib/backbone/backbone
-  'text'
+  'marionette'   // lib/backbone/backbone
 
 ], function($, _, Marionette){
   // Las variables de jQuery, Underscore y Backbone disponibles para usar.

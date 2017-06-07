@@ -20,7 +20,10 @@ define([
     onRoute: function(name, path, args) {
       console.log('User navigated to ' + name);
       this.triggerMethod('rooterShow', {name : name});
-    }
+      }
 
-      
   });
+
+ 
+  
+});
