@@ -1,3 +1,4 @@
+
 define([
   'underscore',
   'marionette',
@@ -23,6 +24,3 @@ define([
 
       
   });
-
-  
-});
