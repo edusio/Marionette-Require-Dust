@@ -1,28 +1,20 @@
 define([
   'underscore',
-  'marionette',
-  'dust',
-  '../projects/test'
+  'marionette'
 
-], function(_, Marionette, dust, test){
+], function(_, Marionette){
   
 	return Marionette.View.extend({
-  		el: '#content',
-  		template: 'plain',
+  		
+
+  		template:  _.template('<h1>Marionette says hello!</h1>'),
      		
       initialize: function(options){
   			debugger;
 
-        this.test = new test();
+    
+  		}
 
-  		},
-
-      regions: {
-        'main' : '#region1'
-      }
-
-
-      
 	});
 
  
