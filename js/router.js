@@ -1,45 +1,28 @@
 define([
   'underscore',
-  'jquery',
-  'backbone',
   'marionette',
-  '../js/views/projects/list'
-], function(_, $,Backbone, Marionette, ListView){
-  
-  var AppRouter = Marionette.AppRouter.extend({
+  '../js/Controller'
+], 
+ function(_, Marionette, Controller){
 
-    routes: {
-      // Algunas urls de ejemplo
-      'projectos': 'showProjects',
-      'users': 'showUsers',
-      // Default
-      '*actions': 'defaultAction'
+
+  return Marionette.AppRouter.extend({
+
+      appRoutes: {
+        "about" : "showAbout"
+      },
+
+    initialize: function(data){
+      this.controller = data;
     },
 
-    /*routes: function(ev){
-     this._addAppRoute(this,'projectos', 'showProjects');
-    },*/
-
-    showProjects: function(){
-		console.log('showProjects router');
-      var view = new ListView(this);
-      view.render();
-
-    },
-
-    defaultAction: function(actions){
-    	 console.log('No route:' +actions);
+    onRoute: function(name, path, args) {
+      console.log('User navigated to ' + name);
+      this.triggerMethod('rooterShow', {name : name});
     }
+
+      
   });
 
-  var initialize = function(){
-
-    var app_router = new AppRouter;
-
-    
-    Backbone.history.start();
-  };
-  return {
-    initialize: initialize
-  };
+  
 });

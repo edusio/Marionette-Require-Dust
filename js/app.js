@@ -1,15 +1,30 @@
 define([
-  'jquery',
   'underscore',
   'marionette',
-  '../js/router' // Request router.js
-], function($, _, Marionette, Router){
+   'backbone',
+    '../js/router'
 
-  var initialize = function(){
+], function(_, Marionette, Backbone, Router){
   
-    Router.initialize();
-  }
-  return {
-    initialize: initialize
-  };
+
+  return Marionette.View.extend({
+      
+
+      template:  _.template('<h1>Marionette says hello!</h1>'),
+        
+      initialize: function(options){
+        debugger;
+      
+       
+    
+      },
+
+      test: function(data){
+        console.log('escucho evento');
+      }
+
+  });
+
+ 
+  
 });
