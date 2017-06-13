@@ -43,7 +43,7 @@ var App = marionette.Application.extend({
     var that = this;
     require([url + data.data+"/module"], function(module){
       if(module){
-      debugger;
+      
         var moduleToBuild = new module();
         //var view = moduleToBuild.view();
         that.app.showView(new moduleToBuild.view())
