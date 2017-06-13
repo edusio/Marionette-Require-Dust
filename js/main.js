@@ -46,7 +46,7 @@ var App = marionette.Application.extend({
       
         var moduleToBuild = new module();
         //var view = moduleToBuild.view();
-        that.app.showView(new moduleToBuild.view())
+        that.app.showView(new moduleToBuild.view({controller :that}));
       }
       else{
         console.log('no existe el modulo');

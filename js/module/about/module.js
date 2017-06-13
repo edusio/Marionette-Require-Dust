@@ -1,12 +1,12 @@
 define([
 	'marionette',
- 	'../test/TestView'
+ 	'../about/AboutView'
 ], 
- function(Marionette, TestView){
+ function(Marionette, AboutView){
  
   return Marionette.Object.extend({
       
-      	view : TestView
+      	view : AboutView
       
   });
 });

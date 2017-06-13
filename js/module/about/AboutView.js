@@ -11,6 +11,9 @@ define([
       
       /*bla */
       template:  _.template('<h1>Hola desde modulo de TEST</h1>'),
-
+      
+      initialize: function(){
+      
+      }
   });
 });
