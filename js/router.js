@@ -10,7 +10,8 @@ define([
   return Marionette.AppRouter.extend({
 
       appRoutes: {
-        "about" : "showAbout"
+        "about" : "showAbout",
+        ":url" : 'showAbout'
       },
 
     initialize: function(data){

@@ -36,8 +36,19 @@ var App = marionette.Application.extend({
     this.controller.app = this;
     this.controller.on('pulaMorena', this.buildView);
   },
-  buildView: function(){
+  
+  buildView: function(data){
     console.log('escucho el evento');
+    require(["../js/"+data.data], function(file){
+      if(file){
+      var file = new file();
+      file.test();
+      }
+      else{
+        console.log('no exite el fichero');
+      }
+     
+    })
   },
 
   onStart(options) {
