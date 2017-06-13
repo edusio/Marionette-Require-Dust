@@ -8,7 +8,7 @@ define([
   return Marionette.Object.extend({
       showAbout : function(data){
       	console.log('entro desde el controller, con data ->'+ data);
-  		this.triggerMethod('pulaMorena', {data:data});
+  		this.triggerMethod('routerShow', {data:data});
 
       }      
       
