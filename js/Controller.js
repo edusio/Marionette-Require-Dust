@@ -9,6 +9,10 @@ define([
       buildModule : function(name, path, args){
       	console.log('entro desde el controller, con data ->'+ name);
   		this.triggerMethod('routerShow', {module:name, subroute: path});
+      },
+
+      navigate : function(){
+      	//TO-DO backbone navigate events
       }      
       
   });

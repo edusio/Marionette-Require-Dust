@@ -11,7 +11,19 @@ define([
 
   return Marionette.View.extend({
       
-      template: templateAbout
+      events : {
+      	'click #hola' : 'navigate'
+      },
+
+      initialize: function(){
+      	debugger;
+      },
+
+      template: templateAbout,
+
+      navigate: function(){
+      	this.options.controller.navigate();
+      }
       
       
   });

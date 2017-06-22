@@ -18,13 +18,14 @@ require.config({
 require([
 
   // Load our app module and pass it to our definition function
+  'underscore',
   'marionette',
   'backbone',
    'js/app',
    'js/router',
    'js/Controller',
    'dust'
-], function(marionette, Backbone, RootView, Router, Controller){
+], function(_,marionette, Backbone, RootView, Router, Controller){
   // The "app" dependency is passed in as "App"
 var url = "js/module/";
 
@@ -45,8 +46,9 @@ var App = marionette.Application.extend({
       app: true,
       module: this
     });
+
     this.controller.app = this;
-    this.controller.on('routerShow', this.buildView);
+    this.controller.on('routerShow', _.bind(this.buildView, this));
   },
   
   buildView: function(data){
@@ -57,7 +59,7 @@ var App = marionette.Application.extend({
 
       //TO-DO llamar al router y añadir las subrutes
       
-      that.app.showView(new moduleToBuild.view({controller :that}));
+     that.showView(new moduleToBuild.view({controller :that.controller}));
       
      
     })
