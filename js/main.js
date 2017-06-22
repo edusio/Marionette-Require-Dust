@@ -1,15 +1,16 @@
 require.config({
 
   // Base path used to load scripts
-  baseUrl: 'node_modules/',
+  baseUrl: '',
   
     paths: {
-      'jquery': 'jquery/dist/jquery',
-      'underscore': 'underscore/underscore',
-      'backbone': 'backbone/backbone',
-      'backbone.radio': 'backbone.radio/build/backbone.radio',
-      'marionette': 'backbone.marionette/lib/backbone.marionette',
-      'dust':'dustjs-linkedin/lib/dust'
+      'jquery': 'node_modules/jquery/dist/jquery',
+      'underscore': 'node_modules/underscore/underscore',
+      'backbone': 'node_modules/backbone/backbone',
+      'backbone.radio': 'node_modules/backbone.radio/build/backbone.radio',
+      'marionette': 'node_modules/backbone.marionette/lib/backbone.marionette',
+      'dust': 'node_modules/dustjs-linkedin/dist/dust-full',//cambiar
+      'text' : 'node_modules/text/text'
     }
 });
 
@@ -19,13 +20,23 @@ require([
   // Load our app module and pass it to our definition function
   'marionette',
   'backbone',
-   '../js/app',
-   '../js/router',
-   '../js/Controller'
+   'js/app',
+   'js/router',
+   'js/Controller',
+   'dust'
 ], function(marionette, Backbone, RootView, Router, Controller){
   // The "app" dependency is passed in as "App"
-var url = "../js/module/";
+var url = "js/module/";
 
+ marionette.Renderer.render = function(template, data){
+   var compilado =  dust.loadSource( dust.compile(template, template)),
+    templateRenderer = '';
+
+    dust.render(template, data, function(err, out){
+      templateRenderer =  out;
+    });
+     return templateRenderer;
+};
 var App = marionette.Application.extend({
   region: '#content',
 
@@ -41,16 +52,13 @@ var App = marionette.Application.extend({
   buildView: function(data){
     console.log('escucho el evento');
     var that = this;
-    require([url + data.data+"/module"], function(module){
-      if(module){
+    require([url + data.module+"/module"], function(module){
+      var moduleToBuild = new module();
+
+      //TO-DO llamar al router y añadir las subrutes
       
-        var moduleToBuild = new module();
-        //var view = moduleToBuild.view();
-        that.app.showView(new moduleToBuild.view({controller :that}));
-      }
-      else{
-        console.log('no existe el modulo');
-      }
+      that.app.showView(new moduleToBuild.view({controller :that}));
+      
      
     })
   },

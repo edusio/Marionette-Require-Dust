@@ -6,10 +6,9 @@ define([
  function(_, Marionette, Backbone){
  
   return Marionette.Object.extend({
-      showAbout : function(data){
-      	console.log('entro desde el controller, con data ->'+ data);
-  		this.triggerMethod('routerShow', {data:data});
-
+      buildModule : function(name, path, args){
+      	console.log('entro desde el controller, con data ->'+ name);
+  		this.triggerMethod('routerShow', {module:name, subroute: path});
       }      
       
   });

@@ -10,6 +10,6 @@
     "todomvc-app-css": "^1.0.1",
     "todomvc-common": "^1.0.1",
     "underscore": "^1.6.0",
-    "dustjs-linkedin": "~2.2"
+     "dustjs-linkedin": "2.7.2",
   }
 }

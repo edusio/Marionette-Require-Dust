@@ -2,18 +2,17 @@
 define([
   'underscore',
   'marionette',
-   'backbone'
-
-], function(_, Marionette, Backbone){
+  'backbone',
+  'text!js/module/about/About.html'
+], function(_, Marionette, Backbone, templateAbout){
   
+  //define.amd.dust = true;
+ 
 
   return Marionette.View.extend({
       
-      /*bla */
-      template:  _.template('<h1>Hola desde modulo de TEST</h1>'),
+      template: templateAbout
       
-      initialize: function(){
       
-      }
   });
 });
