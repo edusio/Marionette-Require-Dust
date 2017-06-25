@@ -11,9 +11,19 @@ define([
   		this.triggerMethod('routerShow', {module:name, subroute: path});
       },
 
-      navigate : function(){
-      	//TO-DO backbone navigate events
-      }      
+      navigate : function(params){
+      	// backbone navigate events
+         Backbone.history.navigate(params.destination, true);
+      },
+
+      startModule: function(data){
+        //Start module on region
+        this.triggerMethod('startModule', {
+          module : data.name,
+          region: data.region,
+          context : data.context
+        });
+      }
       
   });
 });

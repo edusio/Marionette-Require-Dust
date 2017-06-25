@@ -1,6 +1,6 @@
 define([
 	'marionette',
- 	'../test/TestView'
+ 	'../test/view/TestView'
 ], 
  function(Marionette, TestView){
  

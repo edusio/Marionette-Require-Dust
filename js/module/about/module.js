@@ -1,6 +1,6 @@
 define([
 	'marionette',
- 	'../about/AboutView'
+ 	'../about/view/AboutView'
 ], 
  function(Marionette, AboutView){
  
