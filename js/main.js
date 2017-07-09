@@ -27,7 +27,7 @@ require([
    'dust'
 ], function(_,marionette, Backbone, RootView, Router, Controller){
   // The "app" dependency is passed in as "App"
-var url = "js/module/";
+
 
  marionette.Renderer.render = function(template, data){
    var compilado =  dust.loadSource( dust.compile(template, template)),
@@ -47,44 +47,13 @@ var App = marionette.Application.extend({
       module: this
     });
 
-    this.controller.app = this;
-    this.controller.on('routerShow', _.bind(this.buildView, this));
-    this.controller.on('startModule', _.bind(this.startModule, this));
+    this.controller.app = this
   },
   
-  buildView: function(data){
-  //load module
-    var that = this;
-    require([url + data.module+"/module"], 
-      function(module){
-        var moduleToBuild = new module();
-        //TO-DO llamar al router y añadir las subrutes
-        that.showView(new moduleToBuild.view({controller :that.controller}));
-      },
-      function(err){
-        console.log('No existe el modulo solicitado ' + err);
-      }
-    );
-  },
-
-  startModule: function(data){
-    //start module on region
-    var that = this;
-    require([url + data.module+"/module"], 
-      function(module){
-        var moduleToBuild = new module();
-        data.context.showChildView(data.region, new moduleToBuild.view({controller :that.controller}));
-      },
-      function(err){
-        console.log('No existe el modulo solicitado ' + err);
-      }
-    );
-  },
-
   onStart(options) {
     var root = new Router(this.controller);
     //default view
-    this.showView(new RootView());
+    this.showView(new RootView({controller: this.controller}));
     Backbone.history.start();
     
   }
